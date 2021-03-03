@@ -1,6 +1,7 @@
 package com.example.demo.Impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +38,11 @@ public class RequerimentServiceImpl implements IRequerimentService{
 		return dao.findAll();
 	}
 
+	@Override
+	public Optional<Requeriment> ListarId(int id) {
+		Optional<Requeriment> customer = dao.findById(id);
+		return null;
+	}
+    
 	
-	
-
 }

@@ -29,6 +29,14 @@ public class Requeriment {
 	@Temporal(TemporalType.TIMESTAMP)
 	@JsonSerialize(using=ToStringSerializer.class)
 	private Date creation_date;
+	@ManyToOne
+	private Owner userID;
+	public Requeriment() {
+		super();
+	}
+	public Requeriment(Requeriment req) {
+		// TODO Auto-generated constructor stub
+	}
 	//@ManyToOne
 	//@JoinColumn(name="id_owner", nullable=false)
 	//private Owner owner;

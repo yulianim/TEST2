@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Requeriment;
@@ -24,7 +26,8 @@ import com.example.demo.service.IRequerimentService;
 public class RequerimentController {
 	@Autowired
 	private IRequerimentService service;
-
+	
+	// http://localhost:8080/requeriments/listar (GET)
 	@GetMapping(value = "/listar", produces = "application/json")
 	public ResponseEntity<List<Requeriment>> listar() {		
 		List<Requeriment> lista = new ArrayList<>();
@@ -36,6 +39,7 @@ public class RequerimentController {
 		return new ResponseEntity<List<Requeriment>>(lista, HttpStatus.OK);
 	}
 	
+	//http://localhost:8080/requeriments/registrar (POST)
 	@PostMapping(value = "/registrar", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Integer> registrar(@RequestBody Requeriment req) {
 		int resultado = 0;
@@ -48,6 +52,7 @@ public class RequerimentController {
 
 		return new ResponseEntity<Integer>(resultado, HttpStatus.OK);
 	}
+	//http://localhost:8080/requeriments/actualizar  (PUT)
 	@PutMapping(value = "/actualizar", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Integer> actualizar(@RequestBody Requeriment req) {
 		int resultado = 0;
@@ -60,7 +65,7 @@ public class RequerimentController {
 
 		return new ResponseEntity<Integer>(resultado, HttpStatus.OK);
 	}
-	
+	//http://localhost:8080/requeriments/eliminar/{ID}  (DELETE)
 	@DeleteMapping(value = "/eliminar/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Integer> eliminar(@PathVariable Integer id) {
 		int resultado = 0;
@@ -73,6 +78,14 @@ public class RequerimentController {
 
 		return new ResponseEntity<Integer>(resultado, HttpStatus.OK);
 	}
-
+	
+	
+	
+	@GetMapping(value = "/{id}", produces = "application/json")
+	public Optional<Requeriment> getCustomerById(@PathVariable Integer id) 
+		{
+			return service.ListarId(id);
+			
+		}
 
 }
