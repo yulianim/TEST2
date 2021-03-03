@@ -11,3 +11,20 @@ curl -d '{"id":1, "title":"prueba", "description":"description", "creation_date"
 curl -X GET http://localhost:8080/requeriments/listar -i
 
 ----
+
+== 3. Eliminar un requerimiento
+
+----
+curl -X DELETE http://localhost:8080/requeriments/eliminar/3 -i
+
+----
+
+== 4. Actualizar un requerimiento
+----
+curl -d '{"id":5, "title":"pruebas", "description":"descriptions", "creation_date":"2021-02-26"}' -H 'Content-Type: application/json' -X PUT http://localhost:8080/requeriments/actualizar -i
+----
+
+== 5. Obtener un requerimiento por su ID
+----
+curl -X GET http://localhost:8080/requeriments/2 -i
+----
