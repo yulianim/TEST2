@@ -1,4 +1,4 @@
-==PRUEBAS
+== PRUEBAS
 
 == 1. Crear un requerimiento
 ----
