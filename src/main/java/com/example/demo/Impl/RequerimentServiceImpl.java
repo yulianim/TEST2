@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.dao.IRequerimentDAO;
 import com.example.demo.model.Requeriment;
 import com.example.demo.service.IRequerimentService;
+
 @Service
 public class RequerimentServiceImpl implements IRequerimentService{
 	@Autowired
@@ -40,7 +41,7 @@ public class RequerimentServiceImpl implements IRequerimentService{
 
 	@Override
 	public Optional<Requeriment> ListarId(int id) {
-		Optional<Requeriment> customer = dao.findById(id);
+		Optional<Requeriment> req = dao.findById(id);
 		return null;
 	}
     

@@ -3,9 +3,10 @@ package com.example.demo.dao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.model.Requeriment;
+import com.example.demo.model.Bucket;
+
 
 @Repository
-public interface IRequerimentDAO extends JpaRepository<Requeriment, Integer>{
+public interface IBucketDAO extends JpaRepository<Bucket, Integer>{
 
 }
