@@ -9,7 +9,7 @@ import com.example.demo.model.Bucket;
 public interface IBucketService {
 	void registrar(Bucket bucket);
 	void modificar(Bucket bucket);
-	void eliminar(int idBucket);
+	void eliminar(Long idBucket);
 	List<Bucket> listar();
-	public Optional<Bucket> ListarId(int id);
+	public Optional<Bucket> ListarId(Long id);
 }

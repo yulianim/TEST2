@@ -15,33 +15,32 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.model.Requeriment;
-import com.example.demo.service.IRequerimentService;
+import com.example.demo.model.Requirement;
+import com.example.demo.service.IRequirementService;
 
 @RestController
-@RequestMapping("/requeriments")
-public class RequerimentController {
+@RequestMapping("/requirements")
+public class RequirementController {
 	@Autowired
-	private IRequerimentService service;
+	private IRequirementService service;
 	
-	// http://localhost:8080/requeriments/listar (GET)
+	// http://localhost:8080/requirements/listar (GET)
 	@GetMapping(value = "/listar", produces = "application/json")
-	public ResponseEntity<List<Requeriment>> listar() {		
-		List<Requeriment> lista = new ArrayList<>();
+	public ResponseEntity<List<Requirement>> listar() {		
+		List<Requirement> lista = new ArrayList<>();
 		try {
 			lista = service.listar();	
 		}catch(Exception e) {
-			return new ResponseEntity<List<Requeriment>>(lista, HttpStatus.INTERNAL_SERVER_ERROR);	
+			return new ResponseEntity<List<Requirement>>(lista, HttpStatus.INTERNAL_SERVER_ERROR);	
 		}
-		return new ResponseEntity<List<Requeriment>>(lista, HttpStatus.OK);
+		return new ResponseEntity<List<Requirement>>(lista, HttpStatus.OK);
 	}
 	
-	//http://localhost:8080/requeriments/registrar (POST)
+	//http://localhost:8080/requirements/registrar (POST)
 	@PostMapping(value = "/registrar", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Integer> registrar(@RequestBody Requeriment req) {
+	public ResponseEntity<Integer> registrar(@RequestBody Requirement req) {
 		int resultado = 0;
 		try {
 			service.registrar(req);
@@ -52,9 +51,9 @@ public class RequerimentController {
 
 		return new ResponseEntity<Integer>(resultado, HttpStatus.OK);
 	}
-	//http://localhost:8080/requeriments/actualizar  (PUT)
+	//http://localhost:8080/requirements/actualizar  (PUT)
 	@PutMapping(value = "/actualizar", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Integer> actualizar(@RequestBody Requeriment req) {
+	public ResponseEntity<Integer> actualizar(@RequestBody Requirement req) {
 		int resultado = 0;
 		try {
 			service.modificar(req);
@@ -65,9 +64,9 @@ public class RequerimentController {
 
 		return new ResponseEntity<Integer>(resultado, HttpStatus.OK);
 	}
-	//http://localhost:8080/requeriments/eliminar/{ID}  (DELETE)
+	//http://localhost:8080/requirements/eliminar/{ID}  (DELETE)
 	@DeleteMapping(value = "/eliminar/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Integer> eliminar(@PathVariable Integer id) {
+	public ResponseEntity<Integer> eliminar(@PathVariable Long id) {
 		int resultado = 0;
 		try {
 			service.eliminar(id);
@@ -82,7 +81,7 @@ public class RequerimentController {
 	
 	
 	@GetMapping(value = "/{id}", produces = "application/json")
-	public Optional<Requeriment> getCustomerById(@PathVariable Integer id) 
+	public Optional<Requirement> getCustomerById(@PathVariable Long id) 
 		{
 			return service.ListarId(id);
 			

@@ -6,14 +6,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Artifact {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	public Long id;
-	private String title;
-	private String description;
+	public String title;
+	public String description;
+	public Long owner;
+	
 	public Long getId() {
 		return id;
 	}
@@ -32,15 +35,13 @@ public abstract class Artifact {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Artifact() {
-		// TODO Auto-generated constructor stub
+	public Long getOwner() {
+		return owner;
 	}
-	public Artifact(Long id, String title, String description) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.description = description;
+	public void setOwner(Long owner) {
+		this.owner = owner;
 	}
+	
 	
 	
 }

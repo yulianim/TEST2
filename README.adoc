@@ -1,8 +1,14 @@
 == PRUEBAS
-
+== Requirement
 == 1. Crear un requerimiento
 ----
-curl -d '{"id":1, "title":"prueba", "description":"description", "creation_date":"2021-02-26"}' -H 'Content-Type: application/json' -X POST http://localhost:8080/requeriments/registrar -i
+curl -d '{"title":"prueba1", "description":"description", "creation_date":"2021-02-26", "owner": 1, "buket_id":1}' -H 'Content-Type: application/json' -X POST http://localhost:8080/requirements/registrar -i
+
+curl -d '{"title":"prueba2", "description":"description", "creation_date":"2021-02-26", "owner": 1}' -H 'Content-Type: application/json' -X POST http://localhost:8080/requirements/registrar -i
+
+curl -d '{"title":"prueba3", "description":"description", "creation_date":"2021-02-26", "owner": 1}' -H 'Content-Type: application/json' -X POST http://localhost:8080/requirements/registrar -i
+
+curl -d '{"title":"prueba4", "description":"description", "creation_date":"2021-02-26", "owner": 1}' -H 'Content-Type: application/json' -X POST http://localhost:8080/requirements/registrar -i
 
 ----
 
@@ -15,16 +21,45 @@ curl -X GET http://localhost:8080/requeriments/listar -i
 == 3. Eliminar un requerimiento
 
 ----
-curl -X DELETE http://localhost:8080/requeriments/eliminar/3 -i
+curl -X DELETE http://localhost:8080/requeriments/eliminar/1 -i
 
 ----
 
 == 4. Actualizar un requerimiento
 ----
-curl -d '{"id":5, "title":"pruebas", "description":"descriptions", "creation_date":"2021-02-26"}' -H 'Content-Type: application/json' -X PUT http://localhost:8080/requeriments/actualizar -i
+curl -d '{"id":2, "title":"pruebas", "description":"descriptions", "creation_date":"2021-02-26"}' -H 'Content-Type: application/json' -X PUT http://localhost:8080/requeriments/actualizar -i
 ----
 
 == 5. Obtener un requerimiento por su ID
 ----
 curl -X GET http://localhost:8080/requeriments/2 -i
 ----
+
+== Bucket
+
+== 1. Crear bucket
+----
+curl -d '{"title":"bucket1", "description":"description","owner": 1}' -H 'Content-Type: application/json' -X POST http://localhost:8080/buckets/registrar -i
+
+curl -d '{"title":"bucket2", "description":"description","owner": 1}' -H 'Content-Type: application/json' -X POST http://localhost:8080/buckets/registrar -i
+
+
+curl -d '{"title":"bucket3", "description":"description","owner": 1}' -H 'Content-Type: application/json' -X POST http://localhost:8080/buckets/registrar -i
+----
+== 2. Obtener la lista de buckets
+----
+curl -X GET http://localhost:8080/buckets/listar -i
+----
+== 3. Eliminar bucket
+----
+curl -X DELETE http://localhost:8080/buckets/eliminar/6 -i
+----
+== 4. Actualizar bucket
+----
+curl -d '{"id":3, "title":"bucket1Actualizado", "description":"description","owner": 1}' -H 'Content-Type: application/json' -X PUT http://localhost:8080/buckets/actualizar -i
+----
+== 5. Obtener un bucket por su ID
+----
+curl -X GET http://localhost:8080/buckets/2 -i
+----
+

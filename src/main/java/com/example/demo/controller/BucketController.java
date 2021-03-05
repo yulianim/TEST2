@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,12 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Bucket;
-import com.example.demo.model.Requeriment;
 import com.example.demo.service.IBucketService;
 
 @RestController
 @RequestMapping("/buckets")
 public class BucketController {
+	@Autowired
 	private IBucketService service;
 		// http://localhost:8080/buckets/listar (GET)
 		@GetMapping(value = "/listar", produces = "application/json")
@@ -63,7 +64,7 @@ public class BucketController {
 		}
 		//http://localhost:8080/requeriments/eliminar/{ID}  (DELETE)
 		@DeleteMapping(value = "/eliminar/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-		public ResponseEntity<Integer> eliminar(@PathVariable Integer id) {
+		public ResponseEntity<Integer> eliminar(@PathVariable Long id) {
 			int resultado = 0;
 			try {
 				service.eliminar(id);
@@ -75,7 +76,7 @@ public class BucketController {
 			return new ResponseEntity<Integer>(resultado, HttpStatus.OK);
 		}
 		@GetMapping(value = "/{id}", produces = "application/json")
-		public Optional<Bucket> getCustomerById(@PathVariable Integer id) 
+		public Optional<Bucket> getCustomerById(@PathVariable Long id) 
 			{
 				return service.ListarId(id);
 				

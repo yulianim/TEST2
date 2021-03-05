@@ -7,6 +7,6 @@ import com.example.demo.model.Bucket;
 
 
 @Repository
-public interface IBucketDAO extends JpaRepository<Bucket, Integer>{
+public interface IBucketDAO extends JpaRepository<Bucket, Long>{
 
 }

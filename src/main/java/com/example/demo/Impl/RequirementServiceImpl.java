@@ -6,42 +6,42 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dao.IRequerimentDAO;
-import com.example.demo.model.Requeriment;
-import com.example.demo.service.IRequerimentService;
+import com.example.demo.dao.IRequirementDAO;
+import com.example.demo.model.Requirement;
+import com.example.demo.service.IRequirementService;
 
 @Service
-public class RequerimentServiceImpl implements IRequerimentService{
+public class RequirementServiceImpl implements IRequirementService{
 	@Autowired
-	private IRequerimentDAO dao;
+	private IRequirementDAO dao;
 
 	@Override
-	public void registrar(Requeriment requeriment) {
+	public void registrar(Requirement requeriment) {
 		// TODO Auto-generated method stub
 		dao.save(requeriment);
 	}
 
 	@Override
-	public void modificar(Requeriment requeriment) {
+	public void modificar(Requirement requeriment) {
 		// TODO Auto-generated method stub
 		dao.save(requeriment);
 	}
 
 	@Override
-	public void eliminar(int idRequeriment) {
+	public void eliminar(Long idRequeriment) {
 		// TODO Auto-generated method stub
 		dao.deleteById(idRequeriment);
 	}
 
 	@Override
-	public List<Requeriment> listar() {
+	public List<Requirement> listar() {
 		// TODO Auto-generated method stub
 		return dao.findAll();
 	}
 
 	@Override
-	public Optional<Requeriment> ListarId(int id) {
-		Optional<Requeriment> req = dao.findById(id);
+	public Optional<Requirement> ListarId(Long id) {
+		Optional<Requirement> req = dao.findById(id);
 		return null;
 	}
     

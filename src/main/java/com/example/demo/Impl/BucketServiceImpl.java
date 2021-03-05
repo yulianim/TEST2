@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.IBucketDAO;
 import com.example.demo.model.Bucket;
-import com.example.demo.model.Requeriment;
+import com.example.demo.model.Requirement;
 import com.example.demo.service.IBucketService;
 
 @Service
@@ -29,7 +29,7 @@ public class BucketServiceImpl implements IBucketService{
 	}
 
 	@Override
-	public void eliminar(int idBucket) {
+	public void eliminar(Long idBucket) {
 		// TODO Auto-generated method stub
 		dao.deleteById(idBucket);
 	}
@@ -41,7 +41,7 @@ public class BucketServiceImpl implements IBucketService{
 	}
 
 	@Override
-	public Optional<Bucket> ListarId(int id) {
+	public Optional<Bucket> ListarId(Long id) {
 		// TODO Auto-generated method stub
 		Optional<Bucket> bucket = dao.findById(id);
 		return null;
