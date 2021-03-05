@@ -11,11 +11,16 @@ import javax.persistence.OneToMany;
 @Inheritance(strategy=javax.persistence.InheritanceType.TABLE_PER_CLASS)
 @DiscriminatorValue(value = "bucket")
 public class Bucket extends Artifact{
-	@OneToMany
-	private Collection<Artifact> requirements;
-	
+	@OneToMany(mappedBy = "bucket")
+	private Collection<Artifact> artifacts;
 	public Bucket() {
 		// TODO Auto-generated constructor stub
+	}
+	public Collection<Artifact> getArtifacts() {
+		return artifacts;
+	}
+	public void setArtifacts(Collection<Artifact> artifacts) {
+		this.artifacts = artifacts;
 	}
 
 }

@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -16,7 +18,15 @@ public abstract class Artifact {
 	public String title;
 	public String description;
 	public Long owner;
-	
+	@ManyToOne
+	@JoinColumn(name="bucket_id",referencedColumnName="id") 
+	public Bucket bucket;
+	public Bucket getBucket() {
+		return bucket;
+	}
+	public void setBucket(Bucket bucket) {
+		this.bucket = bucket;
+	}
 	public Long getId() {
 		return id;
 	}
