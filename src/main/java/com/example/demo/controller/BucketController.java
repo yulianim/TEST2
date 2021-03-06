@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,10 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Bucket;
 import com.example.demo.service.IBucketService;
+
+import jdk.internal.org.jline.utils.Log;
 
 @RestController
 @RequestMapping("/buckets")
@@ -64,7 +66,7 @@ public class BucketController {
 		}
 		//http://localhost:8080/requeriments/eliminar/{ID}  (DELETE)
 		@DeleteMapping(value = "/eliminar/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-		public ResponseEntity<Integer> eliminar(@PathVariable Long id) {
+		public ResponseEntity<Integer> eliminar(@PathVariable Integer id) {
 			int resultado = 0;
 			try {
 				service.eliminar(id);
@@ -75,11 +77,13 @@ public class BucketController {
 
 			return new ResponseEntity<Integer>(resultado, HttpStatus.OK);
 		}
-		@GetMapping(value = "/{id}", produces = "application/json")
-		public Optional<Bucket> getCustomerById(@PathVariable Long id) 
-			{
-				return service.ListarId(id);
-				
+
+		@GetMapping(value = "/{id}")
+		public ResponseEntity<Bucket> listarId(@PathVariable Integer id) 
+			{		
+				Bucket bucket=new Bucket();
+				bucket=service.ListarId(id);
+			   	return new ResponseEntity<Bucket>(bucket, HttpStatus.OK);
 			}
 
 }

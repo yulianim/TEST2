@@ -9,15 +9,18 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Artifact {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-	public Long id;
+	public Integer id;
 	public String title;
 	public String description;
 	public Long owner;
+	//@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="bucket_id",referencedColumnName="id") 
 	public Bucket bucket;
@@ -27,10 +30,11 @@ public abstract class Artifact {
 	public void setBucket(Bucket bucket) {
 		this.bucket = bucket;
 	}
-	public Long getId() {
+	
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getTitle() {

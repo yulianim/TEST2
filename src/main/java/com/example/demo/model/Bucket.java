@@ -1,6 +1,6 @@
 package com.example.demo.model;
 
-import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -12,15 +12,16 @@ import javax.persistence.OneToMany;
 @DiscriminatorValue(value = "bucket")
 public class Bucket extends Artifact{
 	@OneToMany(mappedBy = "bucket")
-	private Collection<Artifact> artifacts;
+	private List<Artifact> artifacts;
 	public Bucket() {
 		// TODO Auto-generated constructor stub
 	}
-	public Collection<Artifact> getArtifacts() {
+	public List<Artifact> getArtifacts() {
 		return artifacts;
 	}
-	public void setArtifacts(Collection<Artifact> artifacts) {
+	public void setArtifacts(List<Artifact> artifacts) {
 		this.artifacts = artifacts;
 	}
+	
 
 }

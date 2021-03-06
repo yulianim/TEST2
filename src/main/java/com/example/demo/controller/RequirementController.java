@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -66,7 +65,7 @@ public class RequirementController {
 	}
 	//http://localhost:8080/requirements/eliminar/{ID}  (DELETE)
 	@DeleteMapping(value = "/eliminar/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Integer> eliminar(@PathVariable Long id) {
+	public ResponseEntity<Integer> eliminar(@PathVariable Integer id) {
 		int resultado = 0;
 		try {
 			service.eliminar(id);
@@ -78,13 +77,13 @@ public class RequirementController {
 		return new ResponseEntity<Integer>(resultado, HttpStatus.OK);
 	}
 	
-	
-	
-	@GetMapping(value = "/{id}", produces = "application/json")
-	public Optional<Requirement> getCustomerById(@PathVariable Long id) 
-		{
-			return service.ListarId(id);
-			
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<Requirement> listarId(@PathVariable Integer id) 
+		{		
+			Requirement req=new Requirement();
+			req=service.ListarId(id);
+			return new ResponseEntity<Requirement>(req, HttpStatus.OK);
 		}
+	
 
 }

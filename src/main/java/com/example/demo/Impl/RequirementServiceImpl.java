@@ -28,7 +28,7 @@ public class RequirementServiceImpl implements IRequirementService{
 	}
 
 	@Override
-	public void eliminar(Long idRequeriment) {
+	public void eliminar(Integer idRequeriment) {
 		// TODO Auto-generated method stub
 		dao.deleteById(idRequeriment);
 	}
@@ -40,9 +40,8 @@ public class RequirementServiceImpl implements IRequirementService{
 	}
 
 	@Override
-	public Optional<Requirement> ListarId(Long id) {
-		Optional<Requirement> req = dao.findById(id);
-		return null;
+	public Requirement ListarId(Integer id) {
+		return dao.findById(id).orElse(null);
 	}
     
 	

@@ -1,14 +1,12 @@
 package com.example.demo.Impl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.IBucketDAO;
 import com.example.demo.model.Bucket;
-import com.example.demo.model.Requirement;
 import com.example.demo.service.IBucketService;
 
 @Service
@@ -25,11 +23,12 @@ public class BucketServiceImpl implements IBucketService{
 	@Override
 	public void modificar(Bucket bucket) {
 		// TODO Auto-generated method stub
+		bucket.getArtifacts().forEach(x->x.setBucket(bucket));
 		dao.save(bucket);
 	}
 
 	@Override
-	public void eliminar(Long idBucket) {
+	public void eliminar(Integer idBucket) {
 		// TODO Auto-generated method stub
 		dao.deleteById(idBucket);
 	}
@@ -41,9 +40,9 @@ public class BucketServiceImpl implements IBucketService{
 	}
 
 	@Override
-	public Optional<Bucket> ListarId(Long id) {
+	public Bucket ListarId(int id) {
 		// TODO Auto-generated method stub
-		Optional<Bucket> bucket = dao.findById(id);
-		return null;
+		//Optional<Bucket> bucket = dao.findById(id);
+		return dao.findById(id).orElse(null);
 	}
 }

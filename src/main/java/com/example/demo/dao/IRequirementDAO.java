@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.model.Requirement;
 
 @Repository
-public interface IRequirementDAO extends JpaRepository<Requirement, Long>{
+public interface IRequirementDAO extends JpaRepository<Requirement, Integer>{
 
 }
