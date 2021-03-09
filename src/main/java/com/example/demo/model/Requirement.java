@@ -27,6 +27,8 @@ public class Requirement extends Artifact {
 		this.creation_date = creation_date;
 	}
     
-	
+	public Requirement() {
+		// TODO Auto-generated constructor stub
+	}
 
 }

@@ -20,7 +20,20 @@ public abstract class Artifact {
 	public String title;
 	public String description;
 	public Long owner;
-	//@JsonIgnore
+	public Artifact() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Artifact(Integer id, String title, String description, Long owner, Bucket bucket) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.owner = owner;
+		this.bucket = bucket;
+	}
+
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="bucket_id",referencedColumnName="id") 
 	public Bucket bucket;
@@ -54,6 +67,11 @@ public abstract class Artifact {
 	}
 	public void setOwner(Long owner) {
 		this.owner = owner;
+	}
+	@Override
+	public String toString() {
+		return "Artifact [id=" + id + ", title=" + title + ", description=" + description + ", owner=" + owner
+				+ ", bucket=" + bucket + "]";
 	}
 	
 	
